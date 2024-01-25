@@ -10,7 +10,8 @@ class Report extends Model
     use HasFactory;
     public $timestamps = false;
     protected $table = "reports";
-    protected $fillabe =[
+    protected $primaryKey = 'report_id';
+    protected $fillable = [
         'dateandTime',
         'uid',
         'emergency_type',

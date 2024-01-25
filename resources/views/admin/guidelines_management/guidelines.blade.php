@@ -131,12 +131,6 @@
                 "dom": '<"d-flex justify-content-between align-items-center mb-5"lB<"d-flex align-items-center">f>t<"d-flex justify-content-end">p',
             });
 
-            guidelinesTable.on('xhr.dt', function(e, settings, json, xhr) {
-                console.log(json);
-            });
-
-
-
             $('#guidelines-table').on('click', '.edit-guidelines', function() {
                 var guidelinesId = $(this).data('id');
                 $.ajax({

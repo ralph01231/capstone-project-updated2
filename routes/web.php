@@ -88,8 +88,12 @@ Route::prefix('admin')->middleware(['auth', 'superadmin'])->group(function () {
 
     //For Reports
     Route::get('/activereports', [ReportController::class, 'index'])->name('reports');
-    Route::post('/reports/delete-report', [ReportController::class,'destroy']);
-    Route::get('/reports/{report_id}', [ReportController::class, 'show'])->name('reports.show');
+    // Route::post('/reports/delete-report', [ReportController::class,'destroy']);
+    // Route::get('/reports/{report_id}', [ReportController::class, 'show'])->name('reports.show');
+    Route::get('/reports/{report}/show', [ReportController::class, 'show'])->name('reports.show');
+    Route::patch('/reports/{report}', [ReportController::class, 'accept_report'])->name('reports.accept');
+    Route::delete('admin/reports/{report}', [ReportController::class, 'destroy'])->name('reports.destroy');
+    
 
     //for accepted reports
     Route::get('/acceptedreports', [AcceptedReportController::class, 'index'])->name('accepted_reports'); 

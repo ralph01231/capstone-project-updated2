@@ -98,6 +98,7 @@ class HotlinesController extends Controller
 
         return response()->json(['message' => 'Hotline updated successfully']);
     }
+    
     public function destroy(Hotline $hotline)
     {
         try {

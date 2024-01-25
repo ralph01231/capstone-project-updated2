@@ -28,7 +28,7 @@ Admin | Dashboard
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mt-3">
                         <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Disaster Guidelines</li>
+                        <li class="breadcrumb-item active" aria-current="page">Active Reports</li>
                     </ol>
                 </nav>
             </div>

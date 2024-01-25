@@ -25,7 +25,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mt-3">
                         <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Disaster Guidelines</li>
+                        <li class="breadcrumb-item active" aria-current="page">Accepted Reports</li>
                     </ol>
                 </nav>
             </div>
@@ -33,7 +33,7 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center mb-5">
-                        <h4 class="m-0">ACTIVE REPORTS</h4>
+                        <h4 class="m-0">ACCEPTED REPORTS</h4>
                     </div>
                     <div class="card-body">
                         <table class="table table-striped table-bordered" id="accptreport-table">

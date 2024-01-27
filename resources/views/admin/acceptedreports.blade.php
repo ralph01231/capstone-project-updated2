@@ -35,14 +35,15 @@ Admin | Accepted Reports
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center mb-5">
                         <h4 class="m-0">ACCEPTED REPORTS</h4>
-                        <div class="row mb-3">
+                        <div class="row justify-content-end">
                             <div class="col-md-6">
-                                <label for="start_date">Start Date:</label>
-                                <input type="date" class="form-control" id="start_date" name="start_date" />
+                                <label for="filter_date_start">Start:</label>
+                                <input type="datetime-local" class="form-control" id="filter_date_start" name="filter_date_start" />
                             </div>
+
                             <div class="col-md-6">
-                                <label for="end_date">End Date:</label>
-                                <input type="date" class="form-control" id="end_date" name="end_date" />
+                                <label for="filter_date_end">End:</label>
+                                <input type="datetime-local" class="form-control" id="filter_date_end" name="filter_date_end" />
                             </div>
                         </div>
                     </div>
@@ -105,6 +106,12 @@ Admin | Accepted Reports
 
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var currentDate = new Date().toISOString().slice(0, 10);
+
+        document.getElementById('filter_date_start').value = currentDate + 'T00:00:00';
+        document.getElementById('filter_date_end').value = currentDate + 'T00:00:00';
+    });
     $(document).ready(function() {
         var acceptedTable = $('#accptreport-table').DataTable({
             "processing": true,
@@ -115,8 +122,11 @@ Admin | Accepted Reports
                     if (d.buttons) {
                         d.action = 'export';
                     }
-                    d.start_date = $('#start_date').val();
-                    d.end_date = $('#end_date').val();
+                    var filter_date_start = $('#filter_date_start').val();
+                    var filter_date_end = $('#filter_date_end').val();
+
+                    d.filter_date_start = filter_date_start ? moment(filter_date_start).format('YYYY-MM-DD HH:mm:ss') : null;
+                    d.filter_date_end = filter_date_end ? moment(filter_date_end).format('YYYY-MM-DD HH:mm:ss') : null;
                 }
             },
             "columns": [{
@@ -181,7 +191,7 @@ Admin | Accepted Reports
             "dom": '<"d-flex justify-content-between align-items-center mb-5"lB<"d-flex align-items-center">f>t<"d-flex justify-content-end mt-3">p',
         });
 
-        $('#start_date, #end_date').on('change', function() {
+        $('#filter_date_start, #filter_date_end').on('change', function() {
             acceptedTable.ajax.reload();
         });
 

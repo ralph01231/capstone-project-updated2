@@ -214,3 +214,8 @@ body .login-container{
     width: 100% !important;
 }
 
+.table-wrapper{
+    max-height: 200px;
+    overflow-y: scroll;
+}
+

@@ -34,6 +34,10 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center mb-5">
                         <h4 class="m-0">ACCEPTED REPORTS</h4>
+                        <div class="mb-3">
+                            <label for="filter_date">Filter by Date:</label>
+                            <input type="date" class="form-control" id="filter_date" name="filter_date" />
+                        </div>
                     </div>
                     <div class="card-body">
                         <table class="table table-striped table-bordered" id="accptreport-table">
@@ -100,10 +104,11 @@
             "serverSide": true,
             "ajax": {
                 url: "{{ route('accepted_reports') }}",
-                "data": function(d) {
+                data: function(d) {
                     if (d.buttons) {
                         d.action = 'export';
                     }
+                    d.filter_date = $('#filter_date').val();
                 }
             },
             "columns": [{
@@ -166,6 +171,11 @@
             "paging": true,
             "lengthChange": true,
             "dom": '<"d-flex justify-content-between align-items-center mb-5"lB<"d-flex align-items-center">f>t<"d-flex justify-content-end mt-3">p',
+        });
+
+        $('#filter_date').on('input', function() {
+            acceptedTable.ajax.reload();
+            console.log($('#filter_date').val());
         });
 
 

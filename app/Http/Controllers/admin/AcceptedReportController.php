@@ -15,7 +15,15 @@ class AcceptedReportController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Report::select(['report_id', 'dateandTime', 'emergency_type', 'resident_name', 'locationName'])->where('status' , '1');
+        $query = Report::select(['report_id', 'dateandTime', 'emergency_type', 'resident_name', 'locationName'])->where('status', '1');
+
+        if ($request->filled('filter_date')) {
+            $filter_date = $request->input('filter_date');
+            $filter_date_start = $filter_date . ' 00:00:00';
+            $filter_date_end = $filter_date . ' 23:59:59';
+
+            $query->whereBetween('dateandTime', [$filter_date_start, $filter_date_end]);
+        }
 
         if ($request->has('search') && !empty($request->input('search')['value'])) {
             $searchValue = $request->input('search')['value'];
@@ -58,8 +66,6 @@ class AcceptedReportController extends Controller
             return response()->json($jsonData);
         }
 
-        return view('admin.acceptedreports' , $jsonData);
+        return view('admin.acceptedreports', $jsonData);
     }
 }
-
-

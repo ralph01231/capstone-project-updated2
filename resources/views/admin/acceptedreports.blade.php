@@ -37,13 +37,12 @@ Admin | Accepted Reports
                         <h4 class="m-0">ACCEPTED REPORTS</h4>
                         <div class="row justify-content-end">
                             <div class="col-md-6">
-                                <label for="filter_date_start">Start:</label>
-                                <input type="datetime-local" class="form-control" id="filter_date_start" name="filter_date_start" />
+                                <label for="filter_date_start">Start Date:</label>
+                                <input type="date" class="form-control" id="filter_date_start" name="filter_date_start" />
                             </div>
-
                             <div class="col-md-6">
-                                <label for="filter_date_end">End:</label>
-                                <input type="datetime-local" class="form-control" id="filter_date_end" name="filter_date_end" />
+                                <label for="filter_date_end">End Date:</label>
+                                <input type="date" class="form-control" id="filter_date_end" name="filter_date_end" />
                             </div>
                         </div>
                     </div>
@@ -106,12 +105,6 @@ Admin | Accepted Reports
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var currentDate = new Date().toISOString().slice(0, 10);
-
-        document.getElementById('filter_date_start').value = currentDate + 'T00:00:00';
-        document.getElementById('filter_date_end').value = currentDate + 'T00:00:00';
-    });
     $(document).ready(function() {
         var acceptedTable = $('#accptreport-table').DataTable({
             "processing": true,
@@ -122,11 +115,8 @@ Admin | Accepted Reports
                     if (d.buttons) {
                         d.action = 'export';
                     }
-                    var filter_date_start = $('#filter_date_start').val();
-                    var filter_date_end = $('#filter_date_end').val();
-
-                    d.filter_date_start = filter_date_start ? moment(filter_date_start).format('YYYY-MM-DD HH:mm:ss') : null;
-                    d.filter_date_end = filter_date_end ? moment(filter_date_end).format('YYYY-MM-DD HH:mm:ss') : null;
+                    d.filter_date_start = $('#filter_date_start').val();
+                    d.filter_date_end = $('#filter_date_end').val();
                 }
             },
             "columns": [{
@@ -191,7 +181,7 @@ Admin | Accepted Reports
             "dom": '<"d-flex justify-content-between align-items-center mb-5"lB<"d-flex align-items-center">f>t<"d-flex justify-content-end mt-3">p',
         });
 
-        $('#filter_date_start, #filter_date_end').on('change', function() {
+        $('#filter_date_start, #filter_date_end').on('input', function() {
             acceptedTable.ajax.reload();
         });
 

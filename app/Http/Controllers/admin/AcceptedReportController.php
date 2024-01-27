@@ -18,16 +18,16 @@ class AcceptedReportController extends Controller
         $query = Report::select(['report_id', 'dateandTime', 'emergency_type', 'resident_name', 'locationName'])->where('status', '1');
 
         if ($request->filled('filter_date_start') && $request->filled('filter_date_end')) {
-            $filter_date_start = $request->input('filter_date_start');
-            $filter_date_end = $request->input('filter_date_end');
+            $filter_date_start = $request->input('filter_date_start') . ' 00:00:00';
+            $filter_date_end = $request->input('filter_date_end') . ' 23:59:59';
 
             $query->whereBetween('dateandTime', [$filter_date_start, $filter_date_end]);
         } elseif ($request->filled('filter_date_start')) {
-            $filter_date_start = $request->input('filter_date_start');
+            $filter_date_start = $request->input('filter_date_start') . ' 00:00:00';
 
             $query->where('dateandTime', '>=', $filter_date_start);
         } elseif ($request->filled('filter_date_end')) {
-            $filter_date_end = $request->input('filter_date_end');
+            $filter_date_end = $request->input('filter_date_end') . ' 23:59:59';
 
             $query->where('dateandTime', '<=', $filter_date_end);
         }

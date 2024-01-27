@@ -4,7 +4,7 @@
 @section('header')
 
 @section('title')
-Admin | Dashboard
+Admin | Active Reports
 @endsection
 
 @endsection

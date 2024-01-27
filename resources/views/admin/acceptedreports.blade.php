@@ -4,6 +4,7 @@
 @section('header')
 
 @section('title')
+Admin | Accepted Reports
 @endsection
 
 @endsection

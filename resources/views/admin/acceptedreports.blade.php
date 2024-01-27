@@ -35,9 +35,15 @@ Admin | Accepted Reports
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center mb-5">
                         <h4 class="m-0">ACCEPTED REPORTS</h4>
-                        <div class="mb-3">
-                            <label for="filter_date">Filter by Date:</label>
-                            <input type="date" class="form-control" id="filter_date" name="filter_date" />
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="start_date">Start Date:</label>
+                                <input type="date" class="form-control" id="start_date" name="start_date" />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="end_date">End Date:</label>
+                                <input type="date" class="form-control" id="end_date" name="end_date" />
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -109,7 +115,8 @@ Admin | Accepted Reports
                     if (d.buttons) {
                         d.action = 'export';
                     }
-                    d.filter_date = $('#filter_date').val();
+                    d.start_date = $('#start_date').val();
+                    d.end_date = $('#end_date').val();
                 }
             },
             "columns": [{
@@ -174,9 +181,8 @@ Admin | Accepted Reports
             "dom": '<"d-flex justify-content-between align-items-center mb-5"lB<"d-flex align-items-center">f>t<"d-flex justify-content-end mt-3">p',
         });
 
-        $('#filter_date').on('input', function() {
+        $('#start_date, #end_date').on('change', function() {
             acceptedTable.ajax.reload();
-            console.log($('#filter_date').val());
         });
 
 

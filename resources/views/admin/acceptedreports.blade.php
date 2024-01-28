@@ -171,14 +171,13 @@ Admin | Accepted Reports
                     }
                 }
             ],
-            "scrollY": "400px",
             "lengthMenu": [
                 [10, 25, 50, -1],
                 [10, 25, 50, "All"]
             ],
             "paging": true,
             "lengthChange": true,
-            "dom": '<"d-flex justify-content-between align-items-center mb-5"lB<"d-flex align-items-center">f>t<"d-flex justify-content-end mt-3">p',
+            "dom": '<"d-flex justify-content-between align-items-center mb-5"l<"d-flex align-items-center">f>t<"d-flex justify-content-between mt-3"ip>',
         });
 
         $('#filter_date_start, #filter_date_end').on('input', function() {

@@ -155,8 +155,8 @@ Admin | Active Reports
             ],
             order: [
                 [0, 'desc']
-            ]
-
+            ],
+            "dom": '<"d-flex justify-content-between align-items-center mb-5"l<"d-flex align-items-center">f>t<"d-flex justify-content-between mt-3"ip>',
         });
 
         $('#report-table').on('click', '.view-reports', function() {

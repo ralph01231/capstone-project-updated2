@@ -126,7 +126,7 @@
                     <div class="mb-3">
                         <label for="thumbnail" class="form-label">Thumbnail</label>
                         <div id="editThumbnailPreview" class="mb-3"></div>
-                        <input type="file" class="form-control" id="thumbnail" name="thumbnail">
+                        <input type="file" class="form-control" id="edit_thumbnail" name="thumbnail">
                         <span class="text-danger" id="edit_thumbnail"></span>
                     </div>
 
@@ -146,7 +146,7 @@
                         <div class="mb-3">
                             <label for="before_file" class="form-label">File</label>
                             <div id="editBeforeVideoPreview" class="mb-3"></div>
-                            <input type="file" class="form-control" id="before_file" name="before_file">
+                            <input type="file" class="form-control" id="edit_before_file" name="before_file">
                         </div>
                         <div class="mb-3">
                             <label for="before_description" class="form-label">Description</label>
@@ -165,7 +165,7 @@
                         <div class="mb-3">
                             <label for="during_file" class="form-label">File</label>
                             <div id="editDuringVideoPreview" class="mb-3"></div>
-                            <input type="file" class="form-control" id="during_file" name="during_file">
+                            <input type="file" class="form-control" id="edit_during_file" name="during_file">
                         </div>
                         <div class="mb-3">
                             <label for="during_description" class="form-label">Description</label>
@@ -184,7 +184,7 @@
                         <div class="mb-3">
                             <label for="after_file" class="form-label">File</label>
                             <div id="editAfterVideoPreview" class="mb-3"></div>
-                            <input type="file" class="form-control" id="after_file" name="after_file">
+                            <input type="file" class="form-control" id="edit_after_file" name="after_file">
                         </div>
                         <div class="mb-3">
                             <label for="after_description" class="form-label">Description</label>
@@ -351,7 +351,7 @@
             });
         });
 
-        $('#thumbnail, #before_file, #during_file, #after_file').change(function() {
+        $('#thumbnail, #edit_thumbnail, #before_file, #edit_before_file, #during_file, #edit_during_file, #after_file, #edit_after_file').change(function() {
             displayDynamicPreview(this);
         });
     });
@@ -362,19 +362,27 @@
         switch (input.id) {
             case 'thumbnail':
                 previewElement = '#thumbnailPreview';
-                // previewElement = '#editThumbnailPreview';
+                break;
+            case 'edit_thumbnail':
+                previewElement = '#editThumbnailPreview';
                 break;
             case 'before_file':
                 previewElement = '#beforeVideoPreview';
-                // previewElement = '#editBeforeVideoPreview';
+                break;
+            case 'edit_before_file':
+                previewElement = '#editBeforeVideoPreview';
                 break;
             case 'during_file':
                 previewElement = '#duringVideoPreview';
-                // previewElement = '#editDuringVideoPreview';
+                break;
+            case 'edit_during_file':
+                previewElement = '#editDuringVideoPreview';
                 break;
             case 'after_file':
                 previewElement = '#afterVideoPreview';
-                // previewElement = '#editAfterVideoPreview';
+                break;
+            case 'edit_after_file':
+                previewElement = '#editAfterVideoPreview';
                 break;
             default:
                 break;
